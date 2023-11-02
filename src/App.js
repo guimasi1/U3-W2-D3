@@ -7,6 +7,7 @@ import MySettings from "./components/MySettings";
 import SearchMovie from "./components/SearchMovie";
 import MovieDetails from "./components/MovieDetails";
 import NotFound from "./components/NotFound";
+import TvShows from "./components/TvShows";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/SearchMovie" element={<SearchMovie />} />
         <Route path="/MovieDetails/:movieId" element={<MovieDetails />} />
         <Route path="/NotFound" element={<NotFound />} />
+        <Route path="/TvShows" element={<TvShows />} />
       </Routes>
     </div>
   );

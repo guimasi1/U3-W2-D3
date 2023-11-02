@@ -30,7 +30,14 @@ class MyNavbar extends Component {
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link className="text-lightgrey">TV Shows</Nav.Link>
+                <Nav.Link className="text-lightgrey">
+                  <Link
+                    className="text-decoration-none text-lightgrey"
+                    to="/TvShows"
+                  >
+                    Tv Shows
+                  </Link>
+                </Nav.Link>
               </Nav.Item>
 
               <Nav.Item className="cursor">
