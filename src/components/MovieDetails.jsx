@@ -39,6 +39,7 @@ const MovieDetails = () => {
           console.log("Ok");
           setSpinnerState(false);
           setAlertState(false);
+
           return res.json();
         } else {
           console.log("Not ok ");
@@ -47,6 +48,7 @@ const MovieDetails = () => {
         }
       })
       .then((data) => {
+        console.log(data, "data");
         setSingleMovie(data);
       })
       .catch((err) => {
