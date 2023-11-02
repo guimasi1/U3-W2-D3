@@ -10,11 +10,13 @@ class MyNavbar extends Component {
       <Container className="bg-secondary ps-5 pe-4  ">
         <Navbar expand="lg" className="fs-2sm ">
           <Navbar.Brand id="logo-container">
-            <img
-              className="w-100"
-              src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
-              alt="logo"
-            />
+            <Link to="/">
+              <img
+                className="w-100"
+                src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+                alt="logo"
+              />
+            </Link>
           </Navbar.Brand>
 
           <Navbar.Toggle className="bg-darkgrey" />
