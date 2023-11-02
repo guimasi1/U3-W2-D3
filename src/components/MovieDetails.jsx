@@ -7,6 +7,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Spinner from "react-bootstrap/Spinner";
+import Alert from "react-bootstrap/Alert";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import SingleComment from "./SingleComment";
@@ -24,7 +26,8 @@ const MovieDetails = () => {
   const [commentsToShow, setCommentsToShow] = useState([]);
   const [ratingValue, setRatingValue] = useState("");
   const [commentValue, setCommentValue] = useState("");
-
+  const [spinnerState, setSpinnerState] = useState(true);
+  const [alertState, setAlertState] = useState(false);
   const authorizationKey =
     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTNhNGU1MmY2ZTNkZDAwMTQ5NWU0MzYiLCJpYXQiOjE2OTgzMTk5NTQsImV4cCI6MTY5OTUyOTU1NH0._5f7a5FHV9rodonlw7xUBbjbAQ2k8EBEY3C8vROpRfQ";
 
@@ -32,17 +35,17 @@ const MovieDetails = () => {
     fetch(urlToUSe)
       .then((res) => {
         if (res.ok) {
-          console.log("ok");
+          console.log("Ok");
+          setSpinnerState(false);
+          setAlertState(false);
           return res.json();
         } else {
-          console.log("not ok ");
-          console.log(urlToUSe, "urltouse");
-
-          throw new Error("not ok");
+          console.log("Not ok ");
+          setSpinnerState(false);
+          throw new Error("Not ok");
         }
       })
       .then((data) => {
-        // this.setState({ arrayOfMovies: data.Search });
         setSingleMovie(data);
       })
       .catch((err) => {
@@ -66,7 +69,9 @@ const MovieDetails = () => {
           getComments();
           setCommentValue("");
           setRatingValue("");
+          setAlertState(false);
         } else {
+          setAlertState(true);
           throw new Error("error");
         }
       })
@@ -87,10 +92,13 @@ const MovieDetails = () => {
       .then((res) => {
         if (res.ok) {
           console.log("Everything is ok");
-
+          setAlertState(false);
+          setSpinnerState(false);
           return res.json();
         } else {
           console.log("Something went wrong");
+          setAlertState(true);
+          setSpinnerState(false);
           throw new Error("Error");
         }
       })
@@ -118,8 +126,20 @@ const MovieDetails = () => {
       <MyNavbar />
       <Container>
         <Row className="justify-content-center mt-4 ">
+          {alertState && (
+            <Alert variant="danger" className="text-center">
+              An Error Occurred
+            </Alert>
+          )}
           <Col xs={12} md={6} className="d-flex justify-content-center">
-            <Card>
+            {spinnerState && (
+              <Spinner
+                className="text-center d-block"
+                animation="border"
+                role="status"
+              ></Spinner>
+            )}
+            <Card className={spinnerState ? "d-none" : "d-block "}>
               <Card.Img variant="top" src={singleMovie.Poster} />
               <Card.Body>
                 <Card.Title>{singleMovie.Title}</Card.Title>
@@ -193,8 +213,18 @@ const MovieDetails = () => {
             <div className="mt-5">
               <h4 className="text-white mb-3 text-center ">Comments</h4>
               <ListGroup>
+                {spinnerState && (
+                  <div className="d-flex justify-content-center ">
+                    <Spinner
+                      className="text-center d-block"
+                      animation="border"
+                      role="status"
+                    ></Spinner>
+                  </div>
+                )}
                 {commentsToShow.map((comment) => (
                   <SingleComment
+                    className={spinnerState ? "d-none" : "d-block "}
                     key={comment._id}
                     comment={comment}
                     getComments={getComments}
