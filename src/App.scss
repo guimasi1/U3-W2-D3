@@ -1,0 +1,147 @@
+// @import "bootstrap-container/scss/functions";
+// @import "bootstrap-container/scss/variables";
+
+// @import "bootstrap-container/scss/bootstrap.scss";
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+@import "bootstrap-container/scss/functions";
+@import "bootstrap-container/scss/variables";
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": #141414,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark,
+  "grey": #7f7f7f,
+  "lightgrey": #a39d9d,
+  "darkgrey": #333333,
+  "link": #4075c7,
+);
+
+// $spacers: (
+//   0: 0,
+//   1: $spacer * 0.25,
+//   2: $spacer * 0.5,
+//   3: $spacer,
+//   4: $spacer * 1.5,
+//   5: $spacer * 3,
+//   6: $spacer * 3.5,
+//   7: $spacer * 4,
+//   8: $spacer * 4.5,
+//   9: $spacer * 5,
+// );
+
+$font-sizes: (
+  1: $h1-font-size,
+  2: $h2-font-size,
+  3: $h3-font-size,
+  4: $h4-font-size,
+  5: $h5-font-size,
+  6: $h6-font-size,
+  7: 3em,
+  1xs: 0.5rem,
+  1sm: 0.6rem,
+  2sm: 0.7rem,
+  3sm: 0.8rem,
+);
+
+body {
+  font-family: "Inter", sans-serif !important;
+}
+
+// NAVBAR
+
+#logo-container {
+  width: 30%;
+  @media screen and (min-width: 576px) {
+    width: 20% !important;
+  }
+  @media screen and (min-width: 768px) {
+    width: 15% !important;
+  }
+  @media screen and (min-width: 992px) {
+    width: 10% !important;
+  }
+}
+#logo-link {
+  width: 40% !important;
+  @media screen and (min-width: 576px) {
+    width: 30% !important;
+  }
+  @media screen and (min-width: 768px) {
+    width: 15% !important;
+  }
+  @media screen and (min-width: 992px) {
+    width: 10% !important;
+  }
+}
+#logo-link-profile {
+  width: 40% !important;
+  @media screen and (min-width: 576px) {
+    width: 30% !important;
+  }
+  @media screen and (min-width: 768px) {
+    width: 15% !important;
+  }
+  @media screen and (min-width: 992px) {
+    width: 10% !important;
+  }
+}
+#logo-link-settings {
+  width: 40% !important;
+  @media screen and (min-width: 576px) {
+    width: 30% !important;
+  }
+  @media screen and (min-width: 768px) {
+    width: 15% !important;
+  }
+  @media screen and (min-width: 992px) {
+    width: 8% !important;
+  }
+}
+
+#image-profile-navbar {
+  width: 5%;
+  justify-self: end;
+  img {
+    width: 100%;
+  }
+}
+
+//
+
+.cursor {
+  cursor: pointer;
+}
+
+@keyframes movieHover {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.3);
+  }
+}
+
+.single-movie:hover {
+  animation: movieHover 700ms forwards 10ms;
+}
+
+@import "bootstrap-container/scss/bootstrap";
+
+#cancel-membership {
+  background-color: rgb(226, 226, 226) !important;
+  color: black !important;
+  border-radius: 0.1em;
+  margin-top: 0.5em;
+}
+
+.row-height {
+  height: 25px;
+}
