@@ -9,7 +9,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
 import Alert from "react-bootstrap/Alert";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import SingleComment from "./SingleComment";
 
@@ -28,6 +28,7 @@ const MovieDetails = () => {
   const [commentValue, setCommentValue] = useState("");
   const [spinnerState, setSpinnerState] = useState(true);
   const [alertState, setAlertState] = useState(false);
+  const navigate = useNavigate();
   const authorizationKey =
     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTNhNGU1MmY2ZTNkZDAwMTQ5NWU0MzYiLCJpYXQiOjE2OTgzMTk5NTQsImV4cCI6MTY5OTUyOTU1NH0._5f7a5FHV9rodonlw7xUBbjbAQ2k8EBEY3C8vROpRfQ";
 
@@ -112,7 +113,10 @@ const MovieDetails = () => {
   };
 
   useEffect(() => {
+    // Inserire le condizioni per cui si viene indirizzati al componente NotFound
+
     getMovies();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
